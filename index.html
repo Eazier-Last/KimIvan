@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles1.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Personal Website</title>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".nav-button");
+        const sections = document.querySelectorAll(".section");
+
+        function updateActiveSection() {
+          const scrollPosition = window.scrollY;
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            const sectionId = section.getAttribute("id");
+            const navLink = document.querySelector(
+              `.nav-button[href="#${sectionId}"]`
+            );
+
+            // Check if the section is at least partially visible on the screen
+            const isVisible =
+              sectionTop <= scrollPosition + window.innerHeight / 2 &&
+              sectionTop + sectionHeight >=
+                scrollPosition + window.innerHeight / 2;
+
+            if (isVisible) {
+              section.classList.add("active-section");
+              navLink.classList.add("active-link");
+            } else {
+              section.classList.remove("active-section");
+              navLink.classList.remove("active-link");
+            }
+          });
+        }
+
+        window.addEventListener("scroll", updateActiveSection);
+
+        // Smooth scroll for navigation links
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetSectionId = this.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetSectionId);
+
+            const centeringPosition =
+              targetSection.offsetTop -
+              (window.innerHeight - targetSection.clientHeight) / 2;
+
+            window.scrollTo({
+              top: centeringPosition,
+              behavior: "smooth",
+            });
+          });
+        });
+      });
+    </script>
+  </head>
+  <body class="body-bg">
+    <div>
+      <!-- <img class="background" src="background.png" alt="" /> -->
+    </div>
+    <header>
+      <!-- <div class="title">Renz Harvey</div> -->
+      <!-- <div class="logo">1989</div> -->
+      <div class="nav-container">
+        <nav>
+          <a class="nav-button" href="#section1">Home</a>
+          <a class="nav-button" href="#section2">Skills</a>
+          <a class="nav-button" href="#section3">Education</a>
+          <a class="nav-button" href="#section4">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <section id="section1" class="section">
+      <div class="section-title"><h1>Profile</h1></div>
+      <!-- <div class="section-title">
+        <img src="Profile.svg" alt="" />
+      </div> -->
+      <div class="profile-container">
+        <div class="profile-top">
+          <div class="profile-pic">
+            <img src="Kim.png" alt="" />
+          </div>
+          <div class="description">
+            <div class="name">Kim Ivan Laman</div>
+            <!-- <div class="name-sub">Programmer & Illustrator</div> -->
+            <p>
+              <span>Sex:</span> Twice a week <br />
+              <span>Citizenship:</span> Filipino <br />
+              <span>Address:</span> Bukal Lemery Batangas <br />
+            </p>
+          </div>
+        </div>
+        <div class="profile-bottom">
+          <p>
+            IT enthusiast in third year of Lemery Colleges, blending a love for
+            coding with a curiosity for emerging technologies. Proficient in
+            programming languages, databases, and network concepts, I'm on a
+            mission to bridge the gap between theory and practice. Keen on
+            collaborative ventures and staying ahead of the tech curve
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="section2" class="section">
+      <div class="section-title">
+        <h1>Skills</h1>
+      </div>
+      <div class="skill-hobbies">
+        <div class="renz-skill one">
+          &bull;Good Communication <br />
+          &bull;Problem Solving <br />
+          &bull;Active Listening <br />
+        </div>
+        <div class="renz-skill">
+          &bull;Confidence <br />
+          &bull;Teamwork <br />
+          &bull;Responsible
+        </div>
+      </div>
+      <div class="skill-hobbies hobbies">Hobbies</div>
+      <div class="skill-hobbies">
+        <div class="renz-hobbies one">
+          &bull;Mobile Games <br />
+          &bull;Basketball
+        </div>
+        <div class="renz-hobbies">
+          &bull;Hooking up girls <br />
+          &bull;Dating
+        </div>
+      </div>
+    </section>
+
+    <!-- <div class="skills">
+      <div class="interests one">Interests</div>
+        <div class="interests two">
+          <div class="my-interests-skills">&bull;Video Games <br> &bull;Chess</div>
+          <div class="my-interests-skills">&bull;Music <br> &bull;Drawing</div>
+        </div>
+        <div class="my-skill one">Skills</div>
+        <div class="my-skill two">
+          <div class="my-interests-skills">&bull;Graphic Design <br> &bull;Web Development</div>
+          <div class="my-interests-skills">&bull;Digital Illustrations <br> &bull;MS Office Suite</div>
+        </div>
+    </div> -->
+    <section id="section3" class="section">
+      <div class="section-title">
+        <h1>Education</h1>
+      </div>
+      <div class="school-container">
+        <div class="school-left">
+          <div class="school">
+            <a
+              href="https://web.facebook.com/DepEdTayoBukalES107400/"
+              target="_blank"
+              ><img src="Bukal.png" alt=""
+            /></a>
+          </div>
+          <p>2005-2012</p>
+          <div class="school">
+            <a
+              href="https://web.facebook.com/DepEdTayoLSHS305481/"
+              target="_blank"
+              ><img src="Lemsehi.png" alt=""
+            /></a>
+          </div>
+          <p>2018-2020</p>
+        </div>
+        <div class="school-right">
+          <div class="school">
+            <a
+              href="https://web.facebook.com/DepEdTayoGFLMNHS301102/"
+              target="_blank"
+              ><img src="Gflmnhs.png" alt=""
+            /></a>
+          </div>
+          <p>2012-2018</p>
+          <div class="school">
+            <a href="https://lemerycolleges.edu.ph/" target="_blank"
+              ><img src="LC.png" alt=""
+            /></a>
+          </div>
+          <p>2021-PRESENT</p>
+        </div>
+      </div>
+    </section>
+    <section id="section4" class="section">
+      <div class="section-title">
+        <h1>Contact</h1>
+        <!-- <img src="Contact.svg" alt="" /> -->
+      </div>
+      <div class="contact-container">
+        <div class="contact one">
+          <div class="phone-logo"><img src="Phone.png" alt="" /></div>
+          <div class="phone-number">+63-965-3448-730</div>
+        </div>
+        <div class="contact two">
+          <div class="gmail-logo">
+            <a
+              href="https://mail.google.com/mail/?view=cm&source=mailto&to=elijaykimivan@gmail.com"
+              target="_blank"
+              ><img src="Gmail.png" alt=""
+            /></a>
+          </div>
+          <div class="gmail-text">
+            <a
+              href="https://mail.google.com/mail/?view=cm&source=mailto&to=elijaykimivan@gmail.com"
+              target="_blank"
+              >elijaykimivan@gmail.com</a
+            >
+          </div>
+        </div>
+        <div class="contact three">Follow or Message Me</div>
+        <div class="contact four">
+          <div class="social-link">
+            <a
+              href="https://web.facebook.com/eazier.lastsavior/ "
+              target="_blank"
+              ><button><img src="Facebook.png" alt="" /></button
+            ></a>
+          </div>
+          <div class="social-link">
+            <a
+              href="https://www.instagram.com/eazier_moonlight/"
+              target="_blank"
+              ><button><img src="Instagram.png" alt="" /></button
+            ></a>
+          </div>
+          <!-- <div class="social-link">
+            <a href="https://twitter.com/EazierL" target="_blank"
+              ><button><img src="Twitter.png" alt="" /></button
+            ></a>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+    <footer>ALL RIGHTS RESERVED 2023</footer>
+  </body>
+</html>
